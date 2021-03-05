@@ -7,16 +7,26 @@ const ShowScreen = ({ route, blogPosts }) => {
   const blogPost = blogPosts.find((b) => b.id === id);
   return (
     <View>
-      <Text> {blogPost.title}</Text>
+      <Text style={styles.title}> {blogPost.title}</Text>
+      <Text style={styles.content}> {blogPost.content}</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    alignSelf: "center",
+  },
+  content: {
+    fontSize: 18,
+    margin: 20,
+  },
+});
 
 const mapStateToProps = (state) => {
   return {
-    blogPosts: state.blogPosts,
+    blogPosts: state.blogPosts.blogPosts,
   };
 };
 

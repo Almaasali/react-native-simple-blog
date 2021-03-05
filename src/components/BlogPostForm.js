@@ -1,23 +1,41 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  Button,
-} from "react-native";
+import { useState } from "react";
+import { StyleSheet, View, Text, TouchableOpacity, Button } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import { connect } from "react-redux";
+import { onChangeContent, onChangeTitle } from "../redux/actions";
 
-const BlogPostForm = () => {
+const BlogPostForm = ({ OnSubmit, type, blogPost }) => {
+  const [title, setTitle] = useState(type === "edit" ? blogPost.title : "");
+  const [content, setContent] = useState(
+    type === "edit" ? blogPost.content : ""
+  );
+
   return (
     <View>
       <Text style={styles.title}>Enter the title: </Text>
-      <TextInput autoCapitalize={"none"} style={styles.inputStyle} />
+      <TextInput
+        autoCapitalize={"none"}
+        style={styles.inputStyle}
+        value={title}
+        onChangeText={(text) => setTitle(text)}
+      />
       <Text style={styles.title}>Enter the content: </Text>
-      <TextInput autoCapitalize={"none"} style={styles.inputStyle} />
+      <TextInput
+        autoCapitalize={"none"}
+        style={styles.inputStyle}
+        value={content}
+        onChangeText={(text) => setContent(text)}
+      />
       <TouchableOpacity style={styles.saveBtnStyle}>
-        <Button title="Save blog" />
+        <Button
+          title="Save blog"
+          onPress={() => {
+            type === "edit"
+              ? OnSubmit(blogPost.id, title, content)
+              : OnSubmit(title, content);
+          }}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -35,7 +53,6 @@ const styles = StyleSheet.create({
   },
   saveBtnStyle: {
     margin: 10,
-    color: "red",
     fontSize: 18,
   },
 });

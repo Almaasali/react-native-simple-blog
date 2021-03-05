@@ -33,7 +33,11 @@ const Navigator = () => {
           component={ShowScreen}
           options={({ navigation, route }) => ({
             headerRight: () => (
-              <TouchableOpacity onPress={() => navigation.navigate("Edit")}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("Edit", { id: route.params.id })
+                }
+              >
                 <FontAwesome name="pencil" style={styles.editIcon} />
               </TouchableOpacity>
             ),

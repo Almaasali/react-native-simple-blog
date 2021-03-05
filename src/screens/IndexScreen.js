@@ -2,13 +2,12 @@ import React from "react";
 import { StyleSheet, View, Text, FlatList, Button } from "react-native";
 import { connect } from "react-redux";
 import { Feather } from "@expo/vector-icons";
-import { addPost, deletePost } from "../redux/actions";
+import { deletePost } from "../redux/actions";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const IndexScreen = ({ blogPosts, addPost, deletePost, navigation }) => {
   return (
     <View>
-      <Button title="Add Post" onPress={addPost} />
       <FlatList
         data={blogPosts}
         keyExtractor={(item) => item.id}
@@ -48,14 +47,12 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  console.log(state, "app");
   return {
-    blogPosts: state.blogPosts,
+    blogPosts: state.blogPosts.blogPosts,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPost: () => dispatch(addPost()),
     deletePost: (id) => dispatch(deletePost(id)),
   };
 };

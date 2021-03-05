@@ -1,3 +1,7 @@
 export const ADD_POST = "POST/ADD_POST";
 export const UPDATE_POST = "POST/POST_UPDATE";
 export const DELETE_POST = "POST/DELETE_POST";
+export const ON_CHANGE_TITLE = "POST/ON_CHANGE_TITLE";
+export const ON_CHANGE_CONTENT = "POST/ON_CHANGE_CONTENT";
+
+export const ON_SUBMIT = "POST/ON_SUBMIT";
