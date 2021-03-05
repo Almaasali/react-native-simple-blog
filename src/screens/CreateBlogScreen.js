@@ -20,13 +20,6 @@ const CreateBlogScreen = ({ addPost, clearForm, navigation }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    title: state.blogPosts.newBlogPost.title,
-    content: state.blogPosts.newBlogPost.content,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     addPost: (title, content) => dispatch(addPost(title, content)),
@@ -34,4 +27,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateBlogScreen);
+export default connect(null, mapDispatchToProps)(CreateBlogScreen);

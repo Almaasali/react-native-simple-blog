@@ -5,7 +5,7 @@ import { Feather } from "@expo/vector-icons";
 import { deletePost } from "../redux/actions";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const IndexScreen = ({ blogPosts, addPost, deletePost, navigation }) => {
+const IndexScreen = ({ blogPosts, deletePost, navigation }) => {
   return (
     <View>
       <FlatList

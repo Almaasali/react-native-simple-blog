@@ -18,8 +18,6 @@ const EditBlogScreen = ({ route, blogPosts, editPost, navigation }) => {
 const mapStateToProps = (state) => {
   return {
     blogPosts: state.blogPosts.blogPosts,
-    title: state.blogPosts.newBlogPost.title,
-    content: state.blogPosts.newBlogPost.content,
   };
 };
 
